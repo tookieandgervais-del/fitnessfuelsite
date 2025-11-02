@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitness Fuel Protein Powder</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+<style>
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Open Sans',sans-serif;background:#000;color:#fff;scroll-behavior:smooth;}
+a{text-decoration:none;color:inherit;}
+
+/* Header */
+header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;z-index:1000;background:rgba(0,0,0,0.8);}
+nav a{margin-left:25px;color:#FFD700;font-weight:700;transition:0.3s;}
+nav a:hover{color:#fff;}
+
+/* Logo Animation */
+#logo-container{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+#logo-svg{width:150px;height:150px;cursor:pointer;transform-origin:center center;}
+.flame{fill:orange;opacity:0;}
+
+/* Keyframes */
+@keyframes spinZoom{
+  0%{transform:rotate(0deg) scale(0.8);}
+  50%{transform:rotate(180deg) scale(1.1);}
+  100%{transform:rotate(360deg) scale(1);}
+}
+@keyframes flameIgnite{
+  0%{opacity:0; transform: scale(0.5);}
+  50%{opacity:1; transform: scale(1.1);}
+  100%{opacity:1; transform: scale(1);}
+}
+@keyframes flameFlicker{
+  0%,100%{transform:scaleY(1) scaleX(1);}
+  25%{transform:scaleY(1.1) scaleX(0.9);}
+  50%{transform:scaleY(0.9) scaleX(1.05);}
+  75%{transform:scaleY(1.05) scaleX(0.95);}
+}
+
+/* Hero Section */
+#hero{height:100vh;position:relative;background:url('https://cdn.pixabay.com/photo/2017/08/10/03/00/athlete-2616195_1280.jpg') center/cover no-repeat;display:flex;justify-content:center;align-items:center;}
+#hero::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);}
+#hero-content{text-align:center;position:relative;z-index:2;color:#FFD700;padding:0 15px;}
+#hero-content h1{font-family:'Orbitron',sans-serif;font-size:3rem;margin-bottom:15px;text-shadow:0 0 20px #FFD700;}
+#hero-content p{font-size:1.2rem;margin-bottom:25px;}
+
+/* CTA Buttons */
+.cta-button{padding:15px 35px;background:#FFD700;color:#000;font-weight:700;border:none;font-size:1.1rem;border-radius:10px;cursor:pointer;transition:0.3s;box-shadow:0 0 15px #FFD700;}
+.cta-button:hover{background:#fff;color:#FFD700;transform:scale(1.05);box-shadow:0 0 25px #FFD700;}
+
+/* Sections */
+section{padding:100px 20px;max-width:1200px;margin:0 auto;}
+h2.section-title{font-family:'Montserrat',sans-serif;font-size:2.5rem;color:#FFD700;margin-bottom:50px;text-align:center;}
+
+/* Product Grid */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
+.product-card{background:#111;border:2px solid #FFD700;border-radius:12px;overflow:hidden;text-align:center;transition:0.3s;}
+.product-card img{width:100%;height:220px;object-fit:cover;}
+.product-card h3{color:#FFD700;margin:20px 0 10px;}
+.product-card p{color:#fff;margin-bottom:15px;}
+.product-card button{padding:12px 25px;background:#FFD700;border:none;color:#000;font-weight:700;cursor:pointer;border-radius:6px;transition:0.3s;}
+.product-card button:hover{background:#fff;color:#FFD700;transform:scale(1.05);box-shadow:0 0 15px #FFD700;}
+
+/* Benefits */
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px;text-align:center;margin-top:30px;}
+.benefit-icon{font-size:3rem;color:#FFD700;margin-bottom:15px;}
+.benefit-text{color:#fff;font-weight:600;font-size:1rem;}
+
+/* Brand Story */
+.story{display:flex;flex-wrap:wrap;gap:40px;align-items:center;margin-top:50px;}
+.story-text{flex:1;min-width:300px;}
+.story-text h3{color:#FFD700;margin-bottom:20px;font-size:2rem;}
+.story-text p{color:#fff;line-height:1.6;font-size:1.1rem;}
+.story-img{flex:1;min-width:300px;}
+.story-img img{width:100%;border-radius:12px;border:2px solid #FFD700;}
+
+/* CTA Section */
+#cta{text-align:center;background:#111;padding:80px 20px;margin-top:50px;}
+#cta h2{font-size:2.5rem;color:#FFD700;margin-bottom:30px;}
+#cta button{padding:18px 50px;font-size:1.3rem;font-weight:700;border-radius:10px;border:none;background:#FFD700;color:#000;cursor:pointer;transition:0.3s;}
+#cta button:hover{background:#fff;color:#FFD700;transform:scale(1.05);box-shadow:0 0 25px #FFD700;}
+
+/* Footer */
+footer{text-align:center;padding:40px 20px;background:#000;color:#FFD700;font-size:0.9rem;}
+footer a{color:#FFD700;margin:0 15px;transition:0.3s;}
+footer a:hover{color:#fff;}
+
+/* Responsive */
+@media(max-width:768px){header{padding:10px 20px;}#hero-content h1{font-size:2rem;}#hero-content p{font-size:1rem;}.story{flex-direction:column;}.product-card img{height:180px;}}
+</style>
+</head>
+<body>
+
+<header>
+<div id="logo-container">
+<svg id="logo-svg" viewBox="0 0 200 200">
+  <!-- Back-to-back Fs -->
+  <polygon points="50,30 60,30 60,90 80,90 80,100 60,100 60,160 50,160" fill="#FFD700"/>
+  <polygon points="150,30 140,30 140,90 120,90 120,100 140,100 140,160 150,160" fill="#FFD700"/>
+  <!-- Flame -->
+  <path class="flame" d="M100,10 C110,30 120,60 100,80 C80,60 90,30 100,10" />
+</svg>
+</div>
+<nav>
+<a href="#hero">Home</a>
+<a href="#products">Products</a>
+<a href="#story">About</a>
+<a href="#cta">Buy Now</a>
+</nav>
+</header>
+
+<!-- Hero Section -->
+<section id="hero">
+<div id="hero-content">
+<h1>FUEL YOUR FITNESS</h1>
+<p>Power Your Gains with Premium Protein Powder</p>
+<button class="cta-button" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Buy Now</button>
+</div>
+</section>
+
+<!-- Products Section -->
+<section id="products">
+<h2 class="section-title">Our Products</h2>
+<div class="product-grid">
+<div class="product-card">
+<img src="https://cdn.pixabay.com/photo/2017/08/10/03/00/athlete-2616195_1280.jpg" alt="Vanilla">
+<h3>Vanilla Power</h3>
+<p>Delicious whey protein for maximum recovery.</p>
+<button>Buy Now</button>
+</div>
+<div class="product-card">
+<img src="https://cdn.pixabay.com/photo/2016/11/22/07/09/fitness-1840326_1280.jpg" alt="Chocolate">
+<h3>Chocolate Boost</h3>
+<p>Rich chocolate protein to fuel your muscles fast.</p>
+<button>Buy Now</button>
+</div>
+<div class="product-card">
+<img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/gym-1869716_1280.jpg" alt="Strawberry">
+<h3>Strawberry Surge</h3>
+<p>Sweet and fruity whey protein to energize workouts.</p>
+<button>Buy Now</button>
+</div>
+<div class="product-card">
+<img src="https://cdn.pixabay.com/photo/2017/08/10/03/00/athlete-2616195_1280.jpg" alt="Banana">
+<h3>Banana Blast</h3>
+<p>Powerful banana-flavored whey for endurance and energy.</p>
+<button>Buy Now</button>
+</div>
+</div>
+</section>
+
+<!-- Benefits Section -->
+<section id="benefits">
+<h2 class="section-title">Why Fitness Fuel?</h2>
+<div class="benefits">
+<div>
+<div class="benefit-icon">💪</div>
+<div class="benefit-text">Build Muscle Fast</div>
+</div>
+<div>
+<div class="benefit-icon">⚡</div>
+<div class="benefit-text">Quick Energy</div>
+</div>
+<div>
+<div class="benefit-icon">🥇</div>
+<div class="benefit-text">Premium Quality</div>
+</div>
+<div>
+<div class="benefit-icon">🌱</div>
+<div class="benefit-text">Natural Ingredients</div>
+</div>
+</div>
+</section>
+
+<!-- Brand Story Section -->
+<section id="story">
+<h2 class="section-title">Our Story</h2>
+<div class="story">
+<div class="story-text">
+<h3>Fueled by Passion</h3>
+<p>Fitness Fuel started with a mission to provide athletes and gym-goers with the purest, most effective protein powders. Every scoop is designed to power your workouts and recovery.</p>
+</div>
+<div class="story-img">
+<img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/gym-1869716_1280.jpg" alt="Brand Story">
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section id="cta">
+<h2>Get Your Fitness Fuel Now</h2>
+<button>Buy Now</button>
+</section>
+
+<!-- Footer -->
+<footer>
+<p>&copy; 2026 Fitness Fuel | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+</footer>
+
+<script>
+// Animate Logo on Page Load
+const logo = document.getElementById('logo-svg');
+const flame = document.querySelector('.flame');
+
+logo.style.animation = 'spinZoom 2s forwards';
+logo.addEventListener('animationend', ()=>{
+  flame.style.animation = 'flameIgnite 1s forwards, flameFlicker 1s infinite';
+});
+</script>
+
+</body>
+</html>
